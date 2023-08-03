@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
+
  {% block body %}
+
+    <form action="/" method="post">
+        <input autocomplete="off" autofocus type="text" name="page">
+        <button type="submit">go to page</button>
+    </form>
+
+    <h1>Library of {{ name }}</h1>
+    
     <p>
-        {{ placeholder }}
+        {{ string }}
     </p>
+
  {% endblock %}

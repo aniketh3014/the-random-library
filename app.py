@@ -9,8 +9,9 @@ db = SQL("sqlite:///history.db")
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == "POST":
+        page = request.form.get("page")
     string = random_string(1000)
-    print(string)
-    return render_template("index.html", placeholder=string)
+    return render_template("index.html", string=string, name ="Aniket")
