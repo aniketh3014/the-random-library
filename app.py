@@ -7,3 +7,8 @@ app = Flask(__name__)
 
 db = SQL("sqlite:///history.db")
 
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
