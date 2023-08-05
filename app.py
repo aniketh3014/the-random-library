@@ -13,8 +13,13 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 def index():
     if request.method == "POST":
         page = request.form.get("page")
-        if int(page) < 0:
-            return render_template("index.html", string="Please enter a positive number")
+        try:
+            page = int(page)
+        except ValueError:
+            return render_template("index.html", string="Enter a number!")
+        
+        if page < 0:
+            return render_template("index.html", string="Please enter a positive number!")
         random.seed(page)
     string = random_string(1000)
     return render_template("index.html", string=string,)
