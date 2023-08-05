@@ -20,6 +20,10 @@ def index():
         
         if page < 0:
             return render_template("index.html", string="Please enter a positive number!")
+        
+        db.execute("INSERT INTO history (page) VALUES (?);", page)
+
         random.seed(page)
+    rows = db.execute("SELECT * FROM history;")
     string = random_string(1000)
-    return render_template("index.html", string=string,)
+    return render_template("index.html", string=string, history = rows)

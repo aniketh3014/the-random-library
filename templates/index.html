@@ -12,5 +12,21 @@
     <p>
         {{ string }}
     </p>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Search history
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in history %}
+                <tr>
+                    <td> {{ row["page"] }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
  {% endblock %}
